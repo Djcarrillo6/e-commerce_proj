@@ -5,7 +5,7 @@ import bcrypt
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'products/list.html')
 
 
 def new_user(request):
@@ -98,10 +98,10 @@ def login(request):
 
         if is_pw_correct:
             request.session['user_id'] = found_user.id
-            return redirect('/wishes')
+            return redirect('/')
         else:
             print("Password does NOT match our records!")
-            return redirect("/")
+            return redirect("/login")
     else:
         print("Email address does NOT match our records!")
         return redirect("/")
