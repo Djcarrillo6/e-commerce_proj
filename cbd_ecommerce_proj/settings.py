@@ -40,7 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Our apps
+    'accounts',
+    'billing',
+    'carts',
+    'orders',
     'products',
+    'search',
+    'tags',
+
 ]
 
 MIDDLEWARE = [
@@ -52,13 +59,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+LOGOUT_REDIRECT_URL = '/login'
 ROOT_URLCONF = 'cbd_ecommerce_proj.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,7 +135,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(os.path.dirname(
-    BASE_DIR), "static_cdn", "static_root")
+    BASE_DIR), "server", "cbd_ecommerce_proj", "static_cdn", "static_root")
 
 
 MEDIA_URL = '/media/'

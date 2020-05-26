@@ -20,24 +20,18 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from django.contrib import admin
 
-from products.views import (
-    ProductListView,
-    product_list_view,
-    ProductDetailView,
-    product_detail_view,
-    ProductFeaturedListView,
-    ProductFeaturedDetailView
-)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('ecommerce_app.urls')),
-
-
+    path('admin/', admin.site.urls),
+    path('products/', include(('products.urls', 'products'), namespace='products')),
+    path('search/', include(('search.urls', 'search'), namespace='search')),
+    path('cart/', include(('carts.urls', 'carts'), namespace='cart')),
 ]
 
+
 if settings.DEBUG:
-    urlpatterns = urlpatterns + \
-        static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns = urlpatterns + \
-        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
