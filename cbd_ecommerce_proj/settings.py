@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Our apps
     'accounts',
     'addresses',
+    'analytics',
     'billing',
     'carts',
     'orders',
@@ -50,6 +51,15 @@ INSTALLED_APPS = [
     'tags',
 
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
+
+FORCE_SESSION_TO_ONE = False
+FORCE_INACTIVE_USER_ENDSESSION = False
+
+STRIPE_PUB_KEY = 'pk_test_s4SSRcK4prKvieQXuwvbahri00nstF3k9c'
+STRIPE_SECRET_KEY = 'sk_test_1uUlHtjHeyzb9ytFbyyl5h3J00lvByTvcK'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

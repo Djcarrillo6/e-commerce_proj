@@ -2,6 +2,7 @@ from django.http import Http404
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 
+from analytics.mixins import ObjectViewedMixin
 from carts.models import Cart
 
 from .models import Product
@@ -22,7 +23,7 @@ class ProductFeaturedListView(ListView):
         return Product.objects.all().featured()
 
 
-class ProductFeaturedDetailView(DetailView):
+class ProductFeaturedDetailView(ObjectViewedMixin, DetailView):
     queryset = Product.objects.all().featured()
     template_name = "products/detail.html"
 
@@ -34,12 +35,17 @@ class ProductFeaturedDetailView(DetailView):
 class ProductListView(ListView):
     template_name = "products/list.html"
 
-    # # Every 'class based view' has this method
     # def get_context_data(self, *args, **kwargs):
-    #     context = super(ProductListView, self).get_context_data(
-    #         *args, **kwargs)
+    #     context = super(ProductListView, self).get_context_data(*args, **kwargs)
     #     print(context)
     #     return context
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductListView, self).get_context_data(
+            *args, **kwargs)
+        cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+        context['cart'] = cart_obj
+        return context
 
     def get_queryset(self, *args, **kwargs):
         request = self.request
@@ -51,11 +57,10 @@ def product_list_view(request):
     context = {
         'object_list': queryset
     }
-
     return render(request, "products/list.html", context)
 
 
-class ProductDetailSlugView(DetailView):
+class ProductDetailSlugView(ObjectViewedMixin, DetailView):
     queryset = Product.objects.all()
     template_name = "products/detail.html"
 
@@ -80,10 +85,12 @@ class ProductDetailSlugView(DetailView):
         except:
             raise Http404("Uhhmmm ")
 
+        # object_viewed_signal.send(
+        #     instance.__class__, instance=instance, request=request)
         return instance
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(ObjectViewedMixin, DetailView):
     #queryset = Product.objects.all()
     template_name = "products/detail.html"
 

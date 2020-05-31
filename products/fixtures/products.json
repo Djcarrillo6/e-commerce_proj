@@ -1,0 +1,86 @@
+[
+    {
+        "model": "products.product",
+        "pk": 1,
+        "fields": {
+            "title": "T-Shirt",
+            "slug": "tshirt",
+            "description": "Sample",
+            "price": "10.99",
+            "image": "products/2842/2842.jpg",
+            "featured": false,
+            "active": true,
+            "timestamp": "2020-05-21T22:57:12.101Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "title": "Hat",
+            "slug": "Hat",
+            "description": "Sample 2",
+            "price": "23.26",
+            "image": "",
+            "featured": false,
+            "active": true,
+            "timestamp": "2020-05-21T22:57:12.101Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "title": "Python Logo",
+            "slug": "pythonlogo",
+            "description": "P Logo",
+            "price": "10.25",
+            "image": "",
+            "featured": false,
+            "active": true,
+            "timestamp": "2020-05-21T22:57:12.101Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "title": "Quantum Computer",
+            "slug": "computer",
+            "description": "Classfied",
+            "price": "10000.00",
+            "image": "",
+            "featured": true,
+            "active": true,
+            "timestamp": "2020-05-21T22:57:12.101Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "title": "PS4",
+            "slug": "ps4",
+            "description": "PlayStation 4",
+            "price": "100.00",
+            "image": "",
+            "featured": false,
+            "active": true,
+            "timestamp": "2020-05-21T22:57:12.101Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 6,
+        "fields": {
+            "title": "Laptop",
+            "slug": "laptop",
+            "description": "Awesome laptop",
+            "price": "100.00",
+            "image": "",
+            "featured": true,
+            "active": true,
+            "timestamp": "2020-05-22T22:12:32.754Z"
+        }
+    }
+]
